@@ -1,4 +1,47 @@
-<!doctype html> <html lang=en  class=has-navbar-fixed-top > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/libs/highlight/github.min.css"> <link rel=stylesheet  href="/css/styles.css"> <style> html {font-size: 17px;} .franklin-content {position: relative; padding-left: 8%; padding-right: 5%; line-height: 1.35em;} @media (min-width: 940px) { .franklin-content {width: 100%; margin-left: auto; margin-right: auto;} } @media (max-width: 768px) { .franklin-content {padding-left: 6%; padding-right: 6%;} } </style> <link rel=icon  href="/assets/favicon.png"> <title>Template</title> <script src="/libs/highlight/highlight.pack.js"></script> <script src="https://unpkg.com/clipboard@2/dist/clipboard.min.js"></script> <script type=module  src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script> <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script> <script> hljs.getLanguage('julia').keywords.custom = 'obj grad hess AbstractNLPModel'; </script> <nav class="navbar is-primary is-fixed-top" role=navigation  aria-label="main navigation"> <div class=navbar-brand > <a class=navbar-item  href="https://jso-docs.github.io"> <img src="/assets/jso.png"> </a> <a role=button  class=navbar-burger  aria-label=menu  aria-expanded=false  data-target=navbarBasicExample > <span aria-hidden=true ></span> <span aria-hidden=true ></span> <span aria-hidden=true ></span> </a> </div> <div id=navbarBasicExample  class=navbar-menu > <div class=navbar-start > <a class=navbar-item  href="/"> Home </a> <a class=navbar-item  href="/news-and-blogposts/"> News and Blogposts </a> <a class=navbar-item  href="/tutorials/"> Tutorials </a> <div class="navbar-item has-dropdown is-hoverable"> <a class=navbar-link  href="/ecosystems/index.html"> Ecosystems </a> <div class=navbar-dropdown > <a class=navbar-item  href="/ecosystems/linear-algebra/"> Linear Algebra </a> <a class=navbar-item  href="/ecosystems/models/"> Models </a> <a class=navbar-item  href="/ecosystems/solvers/"> Solvers </a> </div> </div> <a class=navbar-item  href="/references/"> References </a> <a class=navbar-item  href="/contributing/"> Contributing </a> </div> <div class=navbar-end > <div class=navbar-item > </div> </div> </div> </nav> <section class=section > <div class=container > <div class=content ><div class=franklin-content ><h1 id=title ><a href="#title" class=header-anchor >Template</a></h1></p> <div class=author >by AUTHORS</div> <p> <pre><code class=language-julia >#&#61;tmp/jl_vk29Uh&#61;#</code></pre>
+<!doctype html> <html lang=en  class=has-navbar-fixed-top > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/libs/highlight/github.min.css"> <link rel=stylesheet  href="/css/styles.css"> <style> html {font-size: 17px;} .franklin-content {position: relative; padding-left: 8%; padding-right: 5%; line-height: 1.35em;} @media (min-width: 940px) { .franklin-content {width: 100%; margin-left: auto; margin-right: auto;} } @media (max-width: 768px) { .franklin-content {padding-left: 6%; padding-right: 6%;} } </style> <link rel=icon  href="/assets/favicon.png"> <title>Template</title> <script src="/libs/highlight/highlight.pack.js"></script> <script src="https://unpkg.com/clipboard@2/dist/clipboard.min.js"></script> <script type=module  src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script> <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script> <script> hljs.getLanguage('julia').keywords.custom = 'obj grad hess AbstractNLPModel'; </script> <nav class="navbar is-primary is-fixed-top" role=navigation  aria-label="main navigation"> <div class=navbar-brand > <a class=navbar-item  href="https://jso-docs.github.io"> <img src="/assets/jso.png"> </a> <a role=button  class=navbar-burger  aria-label=menu  aria-expanded=false  data-target=navbarBasicExample > <span aria-hidden=true ></span> <span aria-hidden=true ></span> <span aria-hidden=true ></span> </a> </div> <div id=navbarBasicExample  class=navbar-menu > <div class=navbar-start > <a class=navbar-item  href="/"> Home </a> <a class=navbar-item  href="/news-and-blogposts/"> News and Blogposts </a> <a class=navbar-item  href="/tutorials/"> Tutorials </a> <div class="navbar-item has-dropdown is-hoverable"> <a class=navbar-link  href="/ecosystems/index.html"> Ecosystems </a> <div class=navbar-dropdown > <a class=navbar-item  href="/ecosystems/linear-algebra/"> Linear Algebra </a> <a class=navbar-item  href="/ecosystems/models/"> Models </a> <a class=navbar-item  href="/ecosystems/solvers/"> Solvers </a> </div> </div> <a class=navbar-item  href="/references/"> References </a> <a class=navbar-item  href="/contributing/"> Contributing </a> </div> <div class=navbar-end > <div class=navbar-item > </div> </div> </div> </nav> <section class=section > <div class=container > <div class=content ><div class=franklin-content ><h1 id=title ><a href="#title" class=header-anchor >Template</a></h1></p> <div class=author >by AUTHORS</div> <p><img class=badge  src="https://img.shields.io/badge/LinearAlgebra-STDLIB-666?style=flat-square&labelColor=444"> <img class=badge  src="https://img.shields.io/badge/SparseArrays-STDLIB-666?style=flat-square&labelColor=444"> <h2 id=a_basic_example ><a href="#a_basic_example" class=header-anchor >A basic example</a></h2> <pre><code class=language-julia >n &#61; 10
+A0 &#61; rand&#40;n, n&#41;
+A &#61; A0 * A0&#39; &#43; I # A is symmetric positive definite
+b &#61; rand&#40;n&#41;</code></pre><pre><code class="plaintext code-output">UndefVarError: I not defined
+</code></pre> <p>We solve the system <code>A x &#61; b</code> using LDLFactorizations.jl:</p> <pre><code class=language-julia >using LDLFactorizations, LinearAlgebra
+Au &#61; Symmetric&#40;triu&#40;A&#41;, :U&#41; # get upper triangle and apply Symmetric wrapper
+LDL &#61; ldl&#40;Au&#41;
+x &#61; LDL \ b</code></pre><pre><code class="plaintext code-output">ArgumentError: Package LDLFactorizations not found in current path:
+- Run `import Pkg; Pkg.add("LDLFactorizations")` to install the LDLFactorizations package.
+
+</code></pre> <h2 id=a_more_performance-focused_example ><a href="#a_more_performance-focused_example" class=header-anchor >A more performance-focused example</a></h2> <p>We build a problem with sparse arrays.</p> <pre><code class=language-julia >using SparseArrays
+n &#61; 100</code></pre><pre><code class="plaintext code-output">100</code></pre>
+<p>create create a SQD matrix A:</p>
+<pre><code class=language-julia >A0 &#61; sprand&#40;Float64, n, n, 0.1&#41;
+A1 &#61; A0 * A0&#39; &#43; I
+A &#61; &#91;A1   A0;
+     A0&#39; -A1&#93;
+b &#61; rand&#40;2 * n&#41;</code></pre><pre><code class="plaintext code-output">UndefVarError: I not defined
+</code></pre>
+<p>Now if we want to use the factorization to solve multiple systems that have the same sparsity pattern as A, we only have to use <code>ldl_analyze</code> once.</p>
+<pre><code class=language-julia >Au &#61; Symmetric&#40;triu&#40;A&#41;, :U&#41; # get upper triangle and apply Symmetric wrapper
+x &#61; similar&#40;b&#41;
+
+LDL &#61; ldl_analyze&#40;Au&#41; # symbolic analysis
+ldl_factorize&#33;&#40;Au, LDL&#41; # factorization
+ldiv&#33;&#40;x, LDL, b&#41; # solve in-place &#40;we could use ldiv&#33;&#40;LDL, b&#41; if we want to overwrite b&#41;
+
+Au.data.nzval .&#43;&#61; 1.0 # modify Au without changing the sparsity pattern
+ldl_factorize&#33;&#40;Au, LDL&#41;
+ldiv&#33;&#40;x, LDL, b&#41;</code></pre><pre><code class="plaintext code-output">UndefVarError: triu not defined
+</code></pre>
+<h2 id=dynamic_regularization ><a href="#dynamic_regularization" class=header-anchor >Dynamic Regularization</a></h2>
+<p>When the matrix to factorize is &#40;nearly&#41; singular and the factorization encounters &#40;nearly&#41; zero pivots, if we know the signs of the pivots and if they are clustered by signs &#40;for example, the <code>n_d</code> first pivots are positive and the other pivots are negative before permuting&#41;, we can use:</p>
+<pre><code class=language-julia >ϵ &#61; sqrt&#40;eps&#40;&#41;&#41;
+Au &#61; Symmetric&#40;triu&#40;A&#41;, :U&#41;
+LDL &#61; ldl_analyze&#40;Au&#41;
+LDL.tol &#61; ϵ
+LDL.n_d &#61; 10
+LDL.r1 &#61; 2 * ϵ # if any of the n_d first pivots |D&#91;i&#93;| &lt; ϵ, then D&#91;i&#93; &#61; sign&#40;LDL.r1&#41; * max&#40;abs&#40;D&#91;i&#93; &#43; LDL.r1&#41;, abs&#40;LDL.r1&#41;&#41;
+LDL.r2 &#61; -ϵ # if any of the n - n_d last pivots |D&#91;i&#93;| &lt; ϵ, then D&#91;i&#93; &#61; sign&#40;LDL.r2&#41; * max&#40;abs&#40;D&#91;i&#93; &#43; LDL.r2&#41;, abs&#40;LDL.r2&#41;&#41;
+ldl_factorize&#33;&#40;Au, LDL&#41;
+#&#61;
+&#61;#</code></pre><pre><code class="plaintext code-output">UndefVarError: triu not defined
+</code></pre>
 
 </div>
     </div>  
