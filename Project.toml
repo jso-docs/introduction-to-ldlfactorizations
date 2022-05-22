@@ -10,6 +10,6 @@ SparseArrays = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
 [compat]
 Franklin = "0.10"
 JSON = "0.21"
-LDLFactorizations = "0.8"
+LDLFactorizations = "0.9"
 NodeJS = "1.3"
 Plots = "1"
